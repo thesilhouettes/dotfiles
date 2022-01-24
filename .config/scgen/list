@@ -1,0 +1,13 @@
+# edit this file easily with an alias:
+edit cf ~/.config/scgen/list
+
+
+edit cfv ~/.vimrc
+edit cfb ~/.bashrc
+edit cff ~/.profile
+edit cfpb ~/.config/polybar/config
+edit cfac ~/.config/alacritty/alacritty.yml
+edit cfnb ~/.newsboat/urls
+
+# Some file paths I often use
+cd sch ~/Documents/cuhk_stuff/year2/term2
