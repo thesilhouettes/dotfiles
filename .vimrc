@@ -116,6 +116,7 @@ tnoremap   <silent>   <F10>   <C-\><C-n>:FloatermKill<CR>
 nnoremap <c-p> :Files<cr>
 nnoremap <c-o> :NERDTreeToggle<cr>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+let NERDTreeShowHidden=1
 
 " Conquare of Completion Settings {{{
 " TextEdit might fail if hidden is not set.

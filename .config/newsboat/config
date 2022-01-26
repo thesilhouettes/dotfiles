@@ -1,0 +1,16 @@
+# general settings
+auto-reload yes
+
+# colours
+color listfocus blue default bold
+color listnormal white default
+color listfocus_unread blue default bold
+color listnormal_unread green default
+color info yellow default
+
+# Use --- (title) --- as a separator
+highlight feedlist "---.*---" yellow default bold
+highlight feedlist ".*0/0.." default default invis
+
+# open with browser
+browser "brave %u &"
