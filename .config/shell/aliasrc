@@ -1,11 +1,31 @@
-alias cfz="vim ~/.config/zsh/.zshrc"
-alias cfp="vim ~/.config/shell/profile"
-alias cfa="vim ~/.config/shell/aliasrc"
+alias cfa='nvim ~/.config/scgen/list'
+alias cfv='nvim ~/.config/nvim/init.vim'
+alias cfz='nvim ~/.config/zsh/.zshrc'
+alias cfzz='nvim ~/.zprofile'
+alias cfx='nvim ~/.config/x11/.xinitrc'
+alias cfb='nvim ~/.bashrc'
+alias cff='nvim ~/.profile'
+alias cfpb='nvim ~/.config/polybar/config'
+alias cfac='nvim ~/.config/alacritty/alacritty.yml'
+alias cfnb='nvim ~/.config/newsboat/urls'
+alias cfk='nvim ~/.config/kitty/kitty.conf'
+alias sch='cd ~/Documents/cuhk_stuff/year2/term2'
+alias doc='cd ~/Documents'
+alias cl='cd ~/.local'
+alias cc='cd ~/.local/code'
+alias csrc='cd ~/.local/src'
+alias cs='cd ~/.local/scripts'
+alias ccf='cd ~/.config'
+alias cdz='cd ~/.config/zsh'
+alias cdx='cd ~/.config/x11'
+alias cdp='cd ~/.config/polybar'
+alias config='git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
+alias yd='yt-dlp --add-metadata --embed-thumbnail --embed-subs --all-subs'
+alias lo='loadoptifine'
+alias la='exa -la'
+alias ls='exa'
+alias ll='exa -l'
+alias p='sudo pacman'
+alias nv='nvim'
+alias v='vim'
 
-alias cc="cd ~/.config/"
-
-alias ls="exa -la"
-alias l="exa"
-alias ll="exa -l"
-
-alias config="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"

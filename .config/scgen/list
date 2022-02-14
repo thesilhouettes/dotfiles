@@ -1,13 +1,40 @@
 # edit this file easily with an alias:
-edit cf ~/.config/scgen/list
+edit cfa ~/.config/scgen/list
 
 
-edit cfv ~/.vimrc
+edit cfv ~/.config/nvim/init.vim
+edit cfz ~/.config/zsh/.zshrc
+edit cfzz ~/.zprofile
+edit cfx ~/.config/x11/.xinitrc
 edit cfb ~/.bashrc
 edit cff ~/.profile
 edit cfpb ~/.config/polybar/config
 edit cfac ~/.config/alacritty/alacritty.yml
-edit cfnb ~/.newsboat/urls
+edit cfnb ~/.config/newsboat/urls
+edit cfk ~/.config/kitty/kitty.conf
 
 # Some file paths I often use
 cd sch ~/Documents/cuhk_stuff/year2/term2
+cd doc ~/Documents
+cd cl ~/.local
+cd cc ~/.local/code
+cd csrc ~/.local/src
+cd cs ~/.local/scripts
+cd ccf ~/.config
+
+# configuration file paths
+cd cdz ~/.config/zsh
+cd cdx ~/.config/x11
+cd cdp ~/.config/polybar
+
+# some hacky stuff
+nop config git --git-dir=$HOME/.dotfiles --work-tree=$HOME
+nop yd yt-dlp --add-metadata --embed-thumbnail --embed-subs --all-subs
+nop lo loadoptifine
+# other commands shorthands
+nop la exa -la
+nop ls exa
+nop ll exa -l
+nop p sudo pacman
+nop nv nvim
+nop v vim

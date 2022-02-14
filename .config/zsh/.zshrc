@@ -1,9 +1,5 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# PATH varaibles
+export PATH=$PATH:$HOME/.local/scripts:$DENO_INSTALL_ROOT
 
 # enable colors and change prompt:
 autoload -U colors && colors	# Load colors
@@ -26,7 +22,6 @@ setopt histignorespace
 # don't accidentally overwrite existing files
 setopt noclobber
 
-[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 
 # basic auto/tab complete:
 autoload -U compinit
@@ -38,7 +33,7 @@ compinit
 _comp_options+=(globdots)		# Include hidden files.
 
 # vi mode
-bindkey -v
+#bindkey -v
 export KEYTIMEOUT=1
 
 # Use vim keys in tab complete menu:
@@ -87,14 +82,24 @@ bindkey -s '^o' 'lfcd\n'
 autoload edit-command-line; zle -N edit-command-line
 bindkey '^e' edit-command-line
 
-# this is provided by zsh-you-should-use package on AUR
-source /usr/share/zsh/plugins/zsh-you-should-use/you-should-use.plugin.zsh
-# powerlevel10k also from AUR
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
-# this is provided by zsh-syntax-highlighting package
-source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.plugin.zsh
-# I will re-organize it later
-source $HOME/.local/repos/zsh-autosuggestions/zsh-autosuggestions.plugin.zsh
+#
+# OH MY ZSH settings
+#
+ZSH_THEME="robbyrussell"
 
-# To customize prompt, run `p10k configure` or edit ~/.config/zsh/.p10k.zsh.
-[[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
+# case sensitive completion
+CASE_SENSITIVE="true"
+
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+DISABLE_MAGIC_FUNCTIONS="true"
+
+plugins=(
+  zsh-syntax-highlighting
+)
+
+source "$ZSH/oh-my-zsh.sh"
+
+# apparently OH MY ZSH adds some alias which clashes with my aliases
+[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
