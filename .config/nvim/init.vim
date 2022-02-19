@@ -67,6 +67,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+
 " Plugins to Install {{{
 call plug#begin()
   Plug 'vimwiki/vimwiki'
@@ -120,7 +121,7 @@ let g:lightline = {
 call lightline#coc#register()
 
 " coc.nvim plugins
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-prettier', 'coc-deno', 'coc-clangd', 'coc-css', 'coc-emmet', 'coc-html',  'coc-lua', 'coc-ltex', 'coc-lightbulb', 'coc-markdownlint', 'coc-tsserver']
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-prettier', 'coc-deno', 'coc-clangd', 'coc-css', 'coc-emmet', 'coc-html',  'coc-lua', 'coc-ltex', 'coc-lightbulb', 'coc-markdownlint', 'coc-tsserver', 'coc-sh']
 
 " fzf
 nnoremap <C-p> :Files<cr>

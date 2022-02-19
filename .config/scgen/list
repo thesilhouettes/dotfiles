@@ -12,6 +12,10 @@ edit cfpb ~/.config/polybar/config
 edit cfac ~/.config/alacritty/alacritty.yml
 edit cfnb ~/.config/newsboat/urls
 edit cfk ~/.config/kitty/kitty.conf
+edit cfd ~/.config/dunst/dunstrc
+edit cfmpd ~/.config/mpd/mpd.conf
+edit cfmpv ~/.config/mpv/mpv.conf
+edit cfnc ~/.config/ncmpcpp/config
 
 # Some file paths I often use
 cd sch ~/Documents/cuhk_stuff/year2/term2

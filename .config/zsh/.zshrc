@@ -22,6 +22,13 @@ setopt histignorespace
 # don't accidentally overwrite existing files
 setopt noclobber
 
+# pfetch configuration
+# a white colour, instead of a greyish colour
+export PF_COL2=7
+
+# what to show in pfetch
+export PF_INFO="ascii os kernel uptime pkgs editor shell"
+
 
 # basic auto/tab complete:
 autoload -U compinit
@@ -70,13 +77,8 @@ lfcd () {
     fi
 }
 
+# bind <C-o> to lfcd function
 bindkey -s '^o' 'lfcd\n'
-
-#bindkey -s '^a' 'bc -lq\n'
-
-#bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
-
-#bindkey '^[[P' delete-char
 
 # Edit line in vim with ctrl-e:
 autoload edit-command-line; zle -N edit-command-line
@@ -97,6 +99,7 @@ DISABLE_MAGIC_FUNCTIONS="true"
 
 plugins=(
   zsh-syntax-highlighting
+  zsh-autosuggestions
 )
 
 source "$ZSH/oh-my-zsh.sh"
