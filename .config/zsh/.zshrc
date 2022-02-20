@@ -1,6 +1,6 @@
 # PATH varaibles
 export PATH=$PATH:$HOME/.local/scripts:$DENO_INSTALL_ROOT
-
+export I3_SCIPRT=$HOME/.local/scripts/i3blocks
 # enable colors and change prompt:
 autoload -U colors && colors	# Load colors
 
@@ -18,9 +18,6 @@ HISTFILE=~/.cache/zsh/history
 setopt histignoredups
 # don't save this line if it has a space in front of the command
 setopt histignorespace
-
-# don't accidentally overwrite existing files
-setopt noclobber
 
 # pfetch configuration
 # a white colour, instead of a greyish colour
@@ -76,6 +73,29 @@ lfcd () {
         [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
     fi
 }
+
+# enable image previews in lf
+lf-ueberzug() {
+	cleanup() {
+		lf-ueberzug-cleaner
+		kill "$UEBERZUGPID"
+		pkill -f "tail -f $LF_UEBERZUG_TEMPDIR/fifo"
+		rm -rf "$LF_UEBERZUG_TEMPDIR"
+	}
+	trap cleanup INT HUP
+
+	# Set up temporary directory.
+	export LF_UEBERZUG_TEMPDIR="$(mktemp -d -t lf-ueberzug-XXXXXX)"
+
+	# Launch ueberzug.
+	mkfifo "$LF_UEBERZUG_TEMPDIR/fifo"
+	tail -f "$LF_UEBERZUG_TEMPDIR/fifo" | ueberzug layer --silent &
+	UEBERZUGPID=$!
+
+	lf "$@"
+	cleanup
+}
+alias lf=lf-ueberzug
 
 # bind <C-o> to lfcd function
 bindkey -s '^o' 'lfcd\n'

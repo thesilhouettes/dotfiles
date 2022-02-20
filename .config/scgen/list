@@ -6,6 +6,8 @@ edit cfv ~/.config/nvim/init.vim
 edit cfz ~/.config/zsh/.zshrc
 edit cfzz ~/.zprofile
 edit cfx ~/.config/x11/.xinitrc
+edit cfi3 ~/.config/i3/config
+edit cfib ~/.config/i3blocks/config
 edit cfb ~/.bashrc
 edit cff ~/.profile
 edit cfpb ~/.config/polybar/config
@@ -16,6 +18,7 @@ edit cfd ~/.config/dunst/dunstrc
 edit cfmpd ~/.config/mpd/mpd.conf
 edit cfmpv ~/.config/mpv/mpv.conf
 edit cfnc ~/.config/ncmpcpp/config
+edit cflf ~/.config/lf/lfrc
 
 # Some file paths I often use
 cd sch ~/Documents/cuhk_stuff/year2/term2

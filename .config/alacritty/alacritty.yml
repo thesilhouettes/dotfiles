@@ -22,7 +22,7 @@ font:
   bold_italic:
     family: FiraCode Nerd Font
     style: Bold Italic
-  size: 15.0
+  size: 10.0
 
 # Colour Scheme
 # Colors (PaperColor - Dark) stolen from https://github.com/eendroroy/alacritty-theme/blob/master/themes/papercolor_dark.yaml
