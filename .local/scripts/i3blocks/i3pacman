@@ -1,0 +1,1 @@
+echo "📦 $(pacman -Q | wc -l)"
