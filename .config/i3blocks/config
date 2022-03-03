@@ -1,3 +1,7 @@
+
+color=#D9E0EE
+background=#1E1D2F
+
 [brightness]
 command=$SCRIPT_DIR/i3bright
 interval=1
@@ -16,5 +20,7 @@ command=$SCRIPT_DIR/i3audio
 [wifi]
 command=$SCRIPT_DIR/i3wifi
 
-[date]
-command=$SCRIPT_DIR/i3date
+[graphics]
+command=$SCRIPT_DIR/i3graphics
+interval=once
+

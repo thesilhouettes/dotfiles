@@ -1,8 +1,13 @@
 # PATH varaibles
-export PATH=$PATH:$HOME/.local/scripts:$DENO_INSTALL_ROOT
-export I3_SCIPRT=$HOME/.local/scripts/i3blocks
+export PATH=$PATH:$HOME/.local/scripts:$HOME/.local/share/npm-global/bin:$DENO_INSTALL_ROOT
 # enable colors and change prompt:
 autoload -U colors && colors	# Load colors
+
+eval "$(starship init zsh)"
+# using spaceship right now, I will just comment the custom prompt out
+#PROMPT="[%B%0(?.%F{2}%?%f.%F{3}%?%f)%b] %B%F{6}%n%f%b at %B%F{7}%3~%f%b $(git_super_status)%B%(#.%F{1}#%f.%F{5}$%f)%b "
+# right prompt
+#RPROMPT='<%!>'
 
 setopt autocd		# automatically cd into typed directory.
 setopt interactive_comments # type comments not only in scripts
@@ -19,6 +24,8 @@ setopt histignoredups
 # don't save this line if it has a space in front of the command
 setopt histignorespace
 
+# enables keys like Ctrl+A, Ctrl+K etc.
+bindkey -e
 # pfetch configuration
 # a white colour, instead of a greyish colour
 export PF_COL2=7
@@ -26,103 +33,16 @@ export PF_COL2=7
 # what to show in pfetch
 export PF_INFO="ascii os kernel uptime pkgs editor shell"
 
+# node version manager
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+# this will make nvm work on demand
+alias nvm="unalias nvm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; nvm $@"
 
-# basic auto/tab complete:
-autoload -U compinit
-zstyle ':completion:*' menu select
-zmodload zsh/complist
-compinit
-
-# suggest hidden files inside tab completions
-_comp_options+=(globdots)		# Include hidden files.
-
-# vi mode
-#bindkey -v
-export KEYTIMEOUT=1
-
-# Use vim keys in tab complete menu:
-bindkey -M menuselect 'h' vi-backward-char
-bindkey -M menuselect 'k' vi-up-line-or-history
-bindkey -M menuselect 'l' vi-forward-char
-bindkey -M menuselect 'j' vi-down-line-or-history
-bindkey -v '^?' backward-delete-char
-
-# Change cursor shape for different vi modes.
-#function zle-keymap-select () {
-#    case $KEYMAP in
-#        vicmd) echo -ne '\e[1 q';;      # block
-#        viins|main) echo -ne '\e[5 q';; # beam
-#    esac
-#}
-#zle -N zle-keymap-select
-#zle-line-init() {
-#    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-#    echo -ne "\e[5 q"
-#}
-#zle -N zle-line-init
-#echo -ne '\e[5 q' # Use beam shape cursor on startup.
-#preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
-#
-# Use lf to switch directories and bind it to ctrl-o
-lfcd () {
-    tmp="$(mktemp)"
-    lf -last-dir-path="$tmp" "$@"
-    if [ -f "$tmp" ]; then
-        dir="$(cat "$tmp")"
-        rm -f "$tmp" >/dev/null
-        [ -d "$dir" ] && [ "$dir" != "$(pwd)" ] && cd "$dir"
-    fi
-}
-
-# enable image previews in lf
-lf-ueberzug() {
-	cleanup() {
-		lf-ueberzug-cleaner
-		kill "$UEBERZUGPID"
-		pkill -f "tail -f $LF_UEBERZUG_TEMPDIR/fifo"
-		rm -rf "$LF_UEBERZUG_TEMPDIR"
-	}
-	trap cleanup INT HUP
-
-	# Set up temporary directory.
-	export LF_UEBERZUG_TEMPDIR="$(mktemp -d -t lf-ueberzug-XXXXXX)"
-
-	# Launch ueberzug.
-	mkfifo "$LF_UEBERZUG_TEMPDIR/fifo"
-	tail -f "$LF_UEBERZUG_TEMPDIR/fifo" | ueberzug layer --silent &
-	UEBERZUGPID=$!
-
-	lf "$@"
-	cleanup
-}
-alias lf=lf-ueberzug
-
-# bind <C-o> to lfcd function
-bindkey -s '^o' 'lfcd\n'
-
-# Edit line in vim with ctrl-e:
-autoload edit-command-line; zle -N edit-command-line
-bindkey '^e' edit-command-line
-
-#
-# OH MY ZSH settings
-#
-ZSH_THEME="robbyrussell"
-
-# case sensitive completion
-CASE_SENSITIVE="true"
-
-zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-DISABLE_MAGIC_FUNCTIONS="true"
-
-plugins=(
-  zsh-syntax-highlighting
-  zsh-autosuggestions
-)
-
-source "$ZSH/oh-my-zsh.sh"
-
-# apparently OH MY ZSH adds some alias which clashes with my aliases
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
+
+# source plugins
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# auto suggestions settings
+bindkey '^ ' autosuggest-accept

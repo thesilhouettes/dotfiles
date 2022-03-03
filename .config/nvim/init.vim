@@ -22,10 +22,7 @@ set encoding=UTF8
 set laststatus=2
 set noshowmode
 set hidden
-set linespace=2
-" spaces
-set smarttab
-set autoindent
+set linespace=2 " spaces set smarttab set autoindent
 set shiftwidth=2
 set expandtab
 set tabstop=2
@@ -49,6 +46,11 @@ nnoremap ;h <c-w>h
 nnoremap ;l <c-w>l
 nnoremap ;j <c-w>j
 nnoremap ;k <c-w>k
+
+" normal mode of terminals
+tnoremap jk <C-\><C-n>
+" open a new tab and switch to it
+nnoremap tt :tabnew<cr>:tabn<cr>
 
 " toggle case of a string in normal mode, without getting into visual mode
 nnoremap <c-u> viw~<esc>
@@ -84,16 +86,20 @@ call plug#begin()
   Plug 'kyazdani42/nvim-tree.lua'
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
+  Plug 'catppuccin/nvim', {'as': 'catppuccin'}
   Plug 'NLKNguyen/papercolor-theme'
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'mkitt/tabline.vim'
+  Plug 'editorconfig/editorconfig-vim'
+  Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
+  Plug 'gregsexton/MatchTag'
 call plug#end()
 
 " }}}
 
 " set colour themes
 set termguicolors
-colorscheme PaperColor
+colorscheme catppuccin
 
 lua require('plugins')
 
@@ -126,8 +132,13 @@ let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-prettier', 'coc-deno'
 " fzf
 nnoremap <C-p> :Files<cr>
 
-" emmet
-autocmd FileType css html imap <tab> <plug>(emmet-expand-abbr)
+" markdown preview
+let g:mkdp_browser = 'brave'
+let g:mkdp_command_for_global = 1
+
+nmap <leader>mm <Plug>MarkdownPreview
+nmap <leader>ms <Plug>MarkdownPreviewStop
+nmap <leader>mt <Plug>MarkdownPreviewToggle
 
 " Conqueror of Completion Settings --- {{{
 " Some servers have issues with backup files, see #649
@@ -164,6 +175,10 @@ inoremap <silent><expr> <Tab>
 inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
