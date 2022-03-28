@@ -1,5 +1,3 @@
-# PATH varaibles
-export PATH=$PATH:$HOME/.local/scripts:$HOME/.local/share/npm-global/bin:$DENO_INSTALL_ROOT
 # enable colors and change prompt:
 autoload -U colors && colors	# Load colors
 
@@ -32,11 +30,6 @@ export PF_COL2=7
 
 # what to show in pfetch
 export PF_INFO="ascii os kernel uptime pkgs editor shell"
-
-# node version manager
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-# this will make nvm work on demand
-alias nvm="unalias nvm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; nvm $@"
 
 [ -f "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc" ] && source "${XDG_CONFIG_HOME:-$HOME/.config}/shell/aliasrc"
 

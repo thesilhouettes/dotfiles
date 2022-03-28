@@ -1,16 +1,41 @@
 {
-  // themes
-  "workbench.colorTheme": "Catppuccin",
-  "workbench.iconTheme": "icons",
+  // some extension defaults
+  "bracketPairColorizer.depreciation-notice": false,
+  "latex-workshop.view.pdf.viewer": "browser",
 
-  // editor
-  "editor.fontFamily": "FiraCode Nerd Font",
+  // formatter
   "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "[c]": {
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+  },
+  "[rust]": {
+    "editor.defaultFormatter": "rust-lang.rust"
+  },
+
+  // whole application
+  "window.zoomLevel": 1,
+  "latex-workshop.latex.tools": [
+    {
+      "name": "latexmk",
+      "command": "latexmk",
+      "args": [
+        "-xelatex",
+        "-synctex=1",
+        "-interaction=nonstopmode",
+        "-file-line-error",
+        "%DOC%"
+      ]
+    }
+  ],
+  // editor
+  "workbench.colorTheme": "Community Material Theme High Contrast",
+  "editor.linkedEditing": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "FiraCode Nerd Font",
   "editor.formatOnSave": true,
   "editor.tabSize": 2,
   "editor.wordWrapColumn": 80,
   "editor.wordWrap": "wordWrapColumn",
-  "editor.fontLigatures": true,
 
   // vim key bindings
   "vim.leader": "-",
@@ -156,6 +181,5 @@
       }
     ]
   },
-  "bracket-pair-colorizer-2.depreciation-notice": false,
-  "window.zoomLevel": -1
+  "workbench.startupEditor": "none"
 }

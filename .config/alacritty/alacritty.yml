@@ -3,7 +3,7 @@ window:
   padding:
     x: 8
     y: 12
-  opacity: 1.0
+  opacity: 0.9
   # no title bars, only the terminal
   decorations: none
 
@@ -22,7 +22,7 @@ font:
   bold_italic:
     family: FiraCode Nerd Font
     style: Bold Italic
-  size: 10.0
+  size: 12.0
 draw_bold_text_with_bright_colors: true
 
 # Catppuccin!

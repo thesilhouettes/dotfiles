@@ -28,39 +28,53 @@ set expandtab
 set tabstop=2
 set softtabstop=2
 
+" start terminal in insert mode
+au BufEnter * if &buftype == 'terminal' | :startinsert | endif
+" open terminal on ctrl+`
+function! OpenTerminal()
+  split term://zsh
+  resize 10
+endfunction
+
+nnoremap <C-m> :call OpenTerminal()<CR>
+
 " preserve tabs in Makefiles
 autocmd FileType make setlocal noexpandtab
 
 " some quality of life keys
 " remove the current line in insert mode
-inoremap <c-d> <esc>ddi
+inoremap <C-d> <esc>ddi
 " return to normal mode with home row keys
 inoremap jk <esc>
-nnoremap <c-s> :w<cr>
+nnoremap <C-s> :w<cr>
 
 " switch tabs
 nnoremap <f1> :tabp<cr>
 nnoremap <f2> :tabn<cr>
-" switch splits
-nnoremap ;h <c-w>h
-nnoremap ;l <c-w>l
-nnoremap ;j <c-w>j
-nnoremap ;k <c-w>k
 
+" easier switching windows
+tnoremap <M-h> <C-\><C-n><C-w>h
+tnoremap <M-j> <C-\><C-n><C-w>j
+tnoremap <M-k> <C-\><C-n><C-w>k
+tnoremap <M-l> <C-\><C-n><C-w>l
+nnoremap <M-h> <c-w>h
+nnoremap <M-j> <c-w>j
+nnoremap <M-k> <c-w>k
+nnoremap <M-l> <c-w>l
 " normal mode of terminals
 tnoremap jk <C-\><C-n>
-" open a new tab and switch to it
-nnoremap tt :tabnew<cr>:tabn<cr>
 
 " toggle case of a string in normal mode, without getting into visual mode
-nnoremap <c-u> viw~<esc>
+nnoremap <C-u> viw~<esc>
 
 " remapping operators
 " this selects the inner stuff between parenthesis
 onoremap p i(
 
 
-let g:vimwiki_list = [{'path': '~/Documents/vimwiki/'}]
+let g:vimwiki_list = [{'path': '~/Documents/vimwiki/',
+                      \'syntax': 'markdown',
+                      \'ext': '.md'}]
 
 " Automatic vimplug install
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
@@ -75,8 +89,6 @@ call plug#begin()
   Plug 'vimwiki/vimwiki'
   Plug 'ap/vim-css-color'
   Plug 'itchyny/lightline.vim'
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'josa42/vim-lightline-coc'
   Plug 'ntpeters/vim-better-whitespace'
@@ -87,12 +99,9 @@ call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   Plug 'catppuccin/nvim', {'as': 'catppuccin'}
-  Plug 'NLKNguyen/papercolor-theme'
   Plug 'nathanaelkane/vim-indent-guides'
-  Plug 'mkitt/tabline.vim'
   Plug 'editorconfig/editorconfig-vim'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
-  Plug 'gregsexton/MatchTag'
 call plug#end()
 
 " }}}
@@ -108,11 +117,6 @@ nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
 
 
-" easier switching windows
-nnoremap <A-h> <c-w>h
-nnoremap <A-j> <c-w>j
-nnoremap <A-k> <c-w>k
-nnoremap <A-l> <c-w>l
 
 set splitbelow
 set splitright
@@ -127,7 +131,7 @@ let g:lightline = {
 call lightline#coc#register()
 
 " coc.nvim plugins
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-prettier', 'coc-deno', 'coc-clangd', 'coc-css', 'coc-emmet', 'coc-html',  'coc-lua', 'coc-ltex', 'coc-lightbulb', 'coc-markdownlint', 'coc-tsserver', 'coc-sh']
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-prettier', 'coc-deno', 'coc-clangd', 'coc-css', 'coc-emmet', 'coc-html',  'coc-lua', 'coc-lightbulb', 'coc-markdownlint', 'coc-tsserver', 'coc-sh', 'coc-rls', 'coc-ltex']
 
 " fzf
 nnoremap <C-p> :Files<cr>
