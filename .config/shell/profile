@@ -165,6 +165,9 @@ ex=🎯:\
 # Switch escape and caps if tty and no passwd required:
 #sudo -n loadkeys ${XDG_DATA_HOME:-$HOME/.local/share}/larbs/ttymaps.kmap 2>/dev/null
 
+# PATH varaibles
+export PATH=$PATH:$HOME/.local/scripts:$HOME/.local/scripts/lf:$HOME/.local/share/npm-global/bin:$DENO_INSTALL_ROOT
+
 # rustup shell setup
 # affix colons on either side of $PATH to simplify matching
 case ":${PATH}:" in
@@ -176,10 +179,11 @@ case ":${PATH}:" in
         ;;
 esac
 
-# PATH varaibles
-export PATH=$PATH:$HOME/.local/scripts:$HOME/.local/share/npm-global/bin:$DENO_INSTALL_ROOT:$HOME/.local/share/cargo/bin
 
 # node version manager
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 # this will make nvm work on demand
 alias nvm="unalias nvm; [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"; nvm $@"
+
+# remove duplicates - I don't know why it has so many of them??
+typeset -U PATH

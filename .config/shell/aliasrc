@@ -35,4 +35,5 @@ alias ll='exa -l'
 alias p='sudo pacman'
 alias nv='nvim'
 alias v='vim'
-
+alias lf='lfrun'
+alias gsei='gnome-shell-extension-installer'

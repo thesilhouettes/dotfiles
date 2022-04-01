@@ -1,0 +1,16 @@
+#! /bin/sh
+# vi: ft=sh
+
+ACTION="${1:-full}"
+
+case $ACTION in
+  full)
+    scrot -F "$(realpath ~/Pictures/screenshots)/%Y-%m-%d_%H-%M-%S.png" --freeze
+    ;;
+  select)
+    scrot -F "$(realpath ~/Pictures/screenshots)/%Y-%m-%d_%H-%M-%S.png" --freeze --select --line mode=edge
+    ;;
+  *)
+    echo "Unknown action! Please try again"
+    exit 1
+esac
