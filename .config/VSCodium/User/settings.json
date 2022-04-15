@@ -1,4 +1,7 @@
 {
+  // don't know where to put these
+  "workbench.startupEditor": "none",
+  "terminal.integrated.enableMultiLinePasteWarning": false,
   // some extension defaults
   "bracketPairColorizer.depreciation-notice": false,
   "latex-workshop.view.pdf.viewer": "browser",
@@ -9,11 +12,12 @@
     "editor.defaultFormatter": "ms-vscode.cpptools"
   },
   "[rust]": {
-    "editor.defaultFormatter": "rust-lang.rust"
+    "editor.defaultFormatter": "matklad.rust-analyzer"
   },
 
   // whole application
   "window.zoomLevel": 1,
+  "editor.autoClosingQuotes": "never",
   "latex-workshop.latex.tools": [
     {
       "name": "latexmk",
@@ -180,6 +184,5 @@
         }
       }
     ]
-  },
-  "workbench.startupEditor": "none"
+  }
 }

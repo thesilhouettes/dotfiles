@@ -16,27 +16,24 @@ augroup END
 
 " some quality of life options
 set number
+" space for the number column
 set numberwidth=4
 set nocompatible
 set encoding=UTF8
+" two lines for status
 set laststatus=2
 set noshowmode
 set hidden
-set linespace=2 " spaces set smarttab set autoindent
+set linespace=2
+" next line follows the previous line indent
+set autoindent
+" how much characters before breaking into a new line automatically
+set textwidth=80
 set shiftwidth=2
+" becomes spaces
 set expandtab
 set tabstop=2
 set softtabstop=2
-
-" start terminal in insert mode
-au BufEnter * if &buftype == 'terminal' | :startinsert | endif
-" open terminal on ctrl+`
-function! OpenTerminal()
-  split term://zsh
-  resize 10
-endfunction
-
-nnoremap <C-m> :call OpenTerminal()<CR>
 
 " preserve tabs in Makefiles
 autocmd FileType make setlocal noexpandtab
@@ -64,9 +61,6 @@ nnoremap <M-l> <c-w>l
 " normal mode of terminals
 tnoremap jk <C-\><C-n>
 
-" toggle case of a string in normal mode, without getting into visual mode
-nnoremap <C-u> viw~<esc>
-
 " remapping operators
 " this selects the inner stuff between parenthesis
 onoremap p i(
@@ -92,7 +86,6 @@ call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'josa42/vim-lightline-coc'
   Plug 'ntpeters/vim-better-whitespace'
-  Plug 'jiangmiao/auto-pairs'
   Plug 'mattn/emmet-vim'
   Plug 'kyazdani42/nvim-web-devicons' " for file icons
   Plug 'kyazdani42/nvim-tree.lua'
@@ -101,10 +94,18 @@ call plug#begin()
   Plug 'catppuccin/nvim', {'as': 'catppuccin'}
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'editorconfig/editorconfig-vim'
+  Plug 'junegunn/rainbow_parentheses.vim'
+  Plug 'jiangmiao/auto-pairs'
+  Plug 'akinsho/toggleterm.nvim'
   Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
+  Plug 'numToStr/Comment.nvim'
+  Plug 'lervag/vimtex'
 call plug#end()
 
 " }}}
+
+" don't add closing parenthesis for quotation marks
+let g:AutoPairs = {'(':')', '[':']', '{':'}'}
 
 " set colour themes
 set termguicolors
@@ -112,11 +113,13 @@ colorscheme catppuccin
 
 lua require('plugins')
 
+" toggle term settings
+nnoremap <silent><M-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>
+inoremap <silent><M-t> <Esc><Cmd>exe v:count1 . "ToggleTerm"<CR>
+
 nnoremap <C-n> :NvimTreeToggle<CR>
 nnoremap <leader>r :NvimTreeRefresh<CR>
 nnoremap <leader>n :NvimTreeFindFile<CR>
-
-
 
 set splitbelow
 set splitright
@@ -131,7 +134,7 @@ let g:lightline = {
 call lightline#coc#register()
 
 " coc.nvim plugins
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-prettier', 'coc-deno', 'coc-clangd', 'coc-css', 'coc-emmet', 'coc-html',  'coc-lua', 'coc-lightbulb', 'coc-markdownlint', 'coc-tsserver', 'coc-sh', 'coc-rls', 'coc-ltex']
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-prettier', 'coc-deno', 'coc-clangd', 'coc-css', 'coc-emmet', 'coc-html',  'coc-lua', 'coc-lightbulb', 'coc-markdownlint', 'coc-tsserver', 'coc-sh', 'coc-rust-analyzer' , 'coc-ltex']
 
 " fzf
 nnoremap <C-p> :Files<cr>
@@ -140,10 +143,13 @@ nnoremap <C-p> :Files<cr>
 let g:mkdp_browser = 'brave'
 let g:mkdp_command_for_global = 1
 
-nmap <leader>mm <Plug>MarkdownPreview
-nmap <leader>ms <Plug>MarkdownPreviewStop
-nmap <leader>mt <Plug>MarkdownPreviewToggle
+nnoremap <leader>mm <Plug>MarkdownPreview
+nnoremap <leader>ms <Plug>MarkdownPreviewStop
+nnoremap <leader>mt <Plug>MarkdownPreviewToggle
 
+" setup zathura as the latex pdf previewer
+let g:vimtex_quickfix_enabled = 0
+let g:vimtex_view_method = 'zathura'
 " Conqueror of Completion Settings --- {{{
 " Some servers have issues with backup files, see #649
 set nobackup

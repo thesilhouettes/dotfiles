@@ -24,6 +24,8 @@ setopt histignorespace
 
 # enables keys like Ctrl+A, Ctrl+K etc.
 bindkey -e
+# vim keys hjkl etc.
+bindkey -v
 # pfetch configuration
 # a white colour, instead of a greyish colour
 export PF_COL2=7
