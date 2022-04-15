@@ -1,5 +1,4 @@
-#! /usr/bin/sh
-# vi: ft=sh
+#! /bin/sh
 
 CURRENT=$(asusctl profile -p | sed 's/Active profile is \(.*\)/\1/')
 

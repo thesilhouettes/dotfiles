@@ -1,0 +1,6 @@
+#! /bin/sh
+
+# sources xprofile
+XPROFILE="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xprofile"
+[[ -f $XPROFILE ]] && source $XPROFILE
+

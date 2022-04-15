@@ -1,0 +1,15 @@
+#!/bin/sh
+
+echo "first: $1 and all: $@"
+
+XRESOURCES="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources"
+
+# merge the xresources if there is one
+[[ -f $XRESOURCES ]] && xrdb -merge $XRESOURCES
+
+# this will swap caps lock and esc, and make the repeated keys speed faster
+# see the script in ~/.local/scripts
+remaps &
+
+# if there is no "dm" argument, then start the standalone window manager
+[[ "$1" != "dm" ]] && exec i3

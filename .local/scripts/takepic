@@ -1,5 +1,4 @@
 #! /bin/sh
-# vi: ft=sh
 
 ACTION="${1:-full}"
 
