@@ -197,9 +197,10 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-bar {
-  status_command SCRIPT_DIR=~/.local/scripts/i3blocks i3blocks
-}
+#bar {
+#  status_command SCRIPT_DIR=~/.local/scripts/i3blocks i3blocks
+#}
+exec_always --no-startup-id ~/.local/scripts/polybar
 
 # i3 gaps
 for_window [class=".*"] border pixel 0

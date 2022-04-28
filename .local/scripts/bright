@@ -1,0 +1,15 @@
+#! /bin/sh
+
+case "$1" in
+  i)
+    brillo -A 5 -q
+    ;;
+  d)
+    brillo -U 5 -q
+    ;;
+  *)
+    CURRENT=$(brillo -G -q)
+    # remove everything after the dot
+    echo ${CURRENT%.*}
+    ;;
+esac

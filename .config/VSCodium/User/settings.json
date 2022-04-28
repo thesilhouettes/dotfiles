@@ -31,10 +31,9 @@
       ]
     }
   ],
-  // editor
-  "workbench.colorTheme": "Community Material Theme High Contrast",
   "editor.linkedEditing": true,
   "workbench.iconTheme": "material-icon-theme",
+  "workbench.colorTheme": "Catppuccin Noctis",
   "editor.fontFamily": "JetBrainsMono Nerd Font",
   "editor.formatOnSave": true,
   "editor.tabSize": 2,

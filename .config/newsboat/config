@@ -8,6 +8,9 @@ unbind-key k
 unbind-key J
 unbind-key K
 
+# don't show errors
+bind-key o open-in-browser
+
 # bind keys - vim style
 bind-key j down
 bind-key k up
@@ -27,3 +30,6 @@ highlight feedlist ".*0/0.." default default invis
 
 # open with browser
 browser "brave %u &"
+
+# open with mpv
+macro y set browser "mpv %u" ; open-in-browser ; set browser "brave %u"

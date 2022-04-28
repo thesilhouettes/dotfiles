@@ -93,7 +93,7 @@
     "command": "-workbench.action.focusAboveGroup"
   },
   {
-    "key": "ctrl+;",
+    "key": "ctrl+x",
     "command": "editor.action.quickFix",
     "when": "editorHasCodeActionsProvider && editorTextFocus && !editorReadonly"
   },

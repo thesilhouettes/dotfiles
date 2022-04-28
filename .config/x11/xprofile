@@ -1,7 +1,5 @@
 #!/bin/sh
 
-echo "first: $1 and all: $@"
-
 XRESOURCES="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources"
 
 # merge the xresources if there is one
@@ -11,5 +9,9 @@ XRESOURCES="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources"
 # see the script in ~/.local/scripts
 remaps &
 
-# if there is no "dm" argument, then start the standalone window manager
-[[ "$1" != "dm" ]] && exec i3
+# start
+case "$1" in
+  i3) exec i3 ;;
+  gnome) exec gnome-session ;;
+  *) exit 1
+esac
