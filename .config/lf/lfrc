@@ -131,3 +131,13 @@ cmd execute ${{
 # new command for creating directories
 cmd mkdir %mkdir "$@"
 map a push :mkdir<space>
+
+# remove execution of files
+cmd remove-execute ${{
+  set -f
+  printf "$fx\n"
+  printf "Removing execution privilege(s)? [y/n]\n"
+  read ans
+  [[ $ans = "y" ]] && chmod -x $fx
+}}
+map X remove-execute
