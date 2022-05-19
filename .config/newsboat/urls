@@ -2,11 +2,11 @@
 https://distrowatch.com/news/dw.xml news
 ---Blogs---
 https://lukesmith.xyz/rss.xml blog "~Luke Smith"
----Videos (Odyssey)---
+---Tech---
 https://odysee.com/$/rss/@Luke:7 linux tech # luke smith
 https://odysee.com/$/rss/@DistroTube:2 linux tech # distrotube
 https://odysee.com/$/rss/@AlphaNerd:8 linux tech # mental outlaw
----Videos (Youtube)---
+---Youtube---
 https://www.youtube.com/feeds/videos.xml?channel_id=UClu2e7S8atp6tG2galK9hgg hermitcraft yt # bdubs
 https://www.youtube.com/feeds/videos.xml?channel_id=UCR9Gcq0CMm6YgTzsDxAxjOQ hermitcraft yt # grian
 https://www.youtube.com/feeds/videos.xml?channel_id=UCDiznUV6dtdB9PQj__XVhnA hermitcraft yt # grian second channel
@@ -15,8 +15,11 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UCcJgOennb0II4a_qi9OMkRA her
 https://www.youtube.com/feeds/videos.xml?channel_id=UC4YUKOBld2PoOLzk0YZ80lw hermitcraft yt # tango
 https://www.youtube.com/feeds/videos.xml?channel_id=UC4O9HKe9Jt5yAhKuNv3LXpQ hermitcraft yt # docm
 https://www.youtube.com/feeds/videos.xml?channel_id=UCPK5G4jeoVEbUp5crKJl6CQ hermitcraft yt # zedaph
+https://www.youtube.com/feeds/videos.xml?channel_id=UCZ9x-z3iOnIbJxVpm1rsu2A hermitcraft yt # iskall
 https://www.youtube.com/feeds/videos.xml?channel_id=UC32w6uX5qtmUtF4QQQ2PKaQ hermitcraft yt # recap
 https://www.youtube.com/feeds/videos.xml?channel_id=UCUkRj4qoT1bsWpE_C8lZYoQ gamedev yt # thin matrix
+---Twitter--
+https://nitter.net/docm77/with_replies/rss hermitcraft tw # docm
 ---Myself---
 https://thesilhouettes.github.io/ts-blog/rss.xml blog
 

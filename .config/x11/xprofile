@@ -10,8 +10,8 @@ XRESOURCES="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources"
 remaps &
 
 # start
+# don't start anything if nothing is supplied
 case "$1" in
   i3) exec i3 ;;
   gnome) exec gnome-session ;;
-  *) exit 1
 esac

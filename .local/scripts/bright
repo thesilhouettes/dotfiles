@@ -1,15 +1,26 @@
 #! /bin/sh
 
+get_brightness() {
+    CURRENT=$(brillo -G)
+    # too lazy to figure out how to round off
+    # so I floored it
+    echo ${CURRENT%.*}
+}
+
+notify_current_brightness() {
+  BRIGHTNESS=$(get_brightness)
+  dunstify -h string:x-dunst-stack-tag:bright -h int:value:"$BRIGHTNESS" -a bright "The brightness is $BRIGHTNESS%"
+}
+
 case "$1" in
   i)
-    brillo -A 5 -q
+    # about 0.1 seconds? God knows why they need to make it microseconds...
+    brillo -A 5
     ;;
   d)
-    brillo -U 5 -q
-    ;;
-  *)
-    CURRENT=$(brillo -G -q)
-    # remove everything after the dot
-    echo ${CURRENT%.*}
+    brillo -U 5
     ;;
 esac
+
+# no matter what, notify the brightness
+notify_current_brightness

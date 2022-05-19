@@ -1,3 +1,4 @@
+#! /bin/sh
 # swap caps lock and esc key on the keyboard
 
 # clear all lock keys so now keys will lock

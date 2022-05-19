@@ -41,3 +41,19 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 
 # auto suggestions settings
 bindkey '^ ' autosuggest-accept
+
+# shamelessly copied from https://github.com/gokcehan/lf/blob/master/etc/lfcd.sh
+tmp="$(mktemp)"
+lfcd() {
+  # I am so happy this actually works with lf-img!!!!!!!
+  lfrun -last-dir-path="$tmp" "$@"
+  if [ -f "$tmp" ]; then
+      dir="$(cat "$tmp")"
+      rm -f "$tmp"
+      if [ -d "$dir" ]; then
+          if [ "$dir" != "$(pwd)" ]; then
+              cd "$dir"
+          fi
+      fi
+  fi
+}

@@ -14,9 +14,6 @@
   "[rust]": {
     "editor.defaultFormatter": "matklad.rust-analyzer"
   },
-
-  // whole application
-  "window.zoomLevel": 1,
   "editor.autoClosingQuotes": "never",
   "latex-workshop.latex.tools": [
     {
@@ -183,5 +180,8 @@
         }
       }
     ]
-  }
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "window.zoomLevel": 1
 }
