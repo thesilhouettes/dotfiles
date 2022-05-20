@@ -13,9 +13,10 @@ vim.keymap.set("n", "<M-k>", "<c-w>k")
 vim.keymap.set("n", "<M-l>", "<c-w>l")
 vim.keymap.set("t", "jk", "<C-\\><C-n>")
 
-vim.keymap.set("n", "<C-n>", ":NvimTreeToggle<CR>")
-vim.keymap.set("n", "<leader>r", ":NvimTreeRefresh<CR>")
-vim.keymap.set("n", "<leader>f", ":NvimTreeFindFile<CR>")
+vim.keymap.set("n", "<leader>ev", ":edit $MYVIMRC<cr>")
+vim.keymap.set("n", "<leader>sv", "so $MYVIMRC<cr>")
 
-require("mappings/bufferline")
-require("mappings/telescope")
+require "mappings/bufferline"
+require "mappings/telescope"
+require "mappings/lspconfig"
+require "mappings/nvim-tree"

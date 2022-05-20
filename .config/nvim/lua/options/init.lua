@@ -16,6 +16,7 @@ set.softtabstop = 2
 set.splitbelow = true
 set.splitright = true
 set.signcolumn = "yes"
+set.mouse = "a"
 
 -- set colour scheme
 set.termguicolors = true
@@ -24,3 +25,8 @@ vim.cmd "colorscheme catppuccin"
 -- set leader keys
 vim.g.leader = "-"
 vim.g.localleader = "\\"
+
+-- vimwiki
+vim.g.vimwiki_list = {
+  { path = "~/Documents/vimwiki", syntax = "markdown", ext = ".md" },
+}

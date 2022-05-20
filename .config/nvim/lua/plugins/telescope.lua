@@ -1,10 +1,12 @@
 require("telescope").setup {
   pickers = {
     find_files = {
-      hidden = true
-    }
+      hidden = true,
+    },
   },
   defaults = {
-    file_ignore_patterns = { "node_modules" }
-  }
+    file_ignore_patterns = {
+      "node_modules",
+    },
+  },
 }

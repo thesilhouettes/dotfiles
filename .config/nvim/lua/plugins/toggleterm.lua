@@ -9,5 +9,5 @@ require("toggleterm").setup {
     width = 120,
     height = 50,
     winblend = 3,
-  }
+  },
 }
