@@ -20,7 +20,10 @@ set.mouse = "a"
 
 -- set colour scheme
 set.termguicolors = true
-vim.cmd "colorscheme catppuccin"
+-- dont' halt the executino when it produces an error
+pcall(function()
+  vim.cmd "colorscheme catppuccin"
+end)
 
 -- set leader keys
 vim.g.leader = "-"

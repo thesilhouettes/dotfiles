@@ -5,7 +5,7 @@ set previewer ~/.config/lf/preview
 set shell sh
 set ignorecase
 set hidden true
-set icons
+set icons true
 
 # set '-eu' options for shell commands
 # These options are used to have safer shell commands. Option '-e' is used to

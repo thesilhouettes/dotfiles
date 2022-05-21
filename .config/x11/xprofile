@@ -1,9 +1,9 @@
-#!/bin/sh
+#! /bin/sh
 
 XRESOURCES="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources"
 
 # merge the xresources if there is one
-[[ -f $XRESOURCES ]] && xrdb -merge $XRESOURCES
+[ -f "$XRESOURCES" ] && xrdb -merge "$XRESOURCES"
 
 # this will swap caps lock and esc, and make the repeated keys speed faster
 # see the script in ~/.local/scripts
@@ -12,6 +12,7 @@ remaps &
 # start
 # don't start anything if nothing is supplied
 case "$1" in
-  i3) exec i3 ;;
-  gnome) exec gnome-session ;;
+i3) exec i3 ;;
+awe) exec awesome ;;
+gnome) exec gnome-session ;;
 esac

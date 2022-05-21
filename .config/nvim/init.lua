@@ -1,8 +1,8 @@
 -- import options
-require("options")
+require "options"
 
 -- import plugins
-require("plugins")
+require "plugins"
 
 -- import keymappings
-require("mappings")
+require "mappings"
