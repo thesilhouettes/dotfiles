@@ -4,8 +4,7 @@ autoload -U colors && colors	# Load colors
 eval "$(starship init zsh)"
 # using spaceship right now, I will just comment the custom prompt out
 #PROMPT="[%B%0(?.%F{2}%?%f.%F{3}%?%f)%b] %B%F{6}%n%f%b at %B%F{7}%3~%f%b $(git_super_status)%B%(#.%F{1}#%f.%F{5}$%f)%b "
-# right prompt
-#RPROMPT='<%!>'
+# right prompt RPROMPT='<%!>'
 
 setopt autocd		# automatically cd into typed directory.
 setopt interactive_comments # type comments not only in scripts
@@ -56,4 +55,10 @@ lfcd() {
           fi
       fi
   fi
+}
+
+# generate cover report for go
+gocov() {
+  go test -coverprofile="/tmp/c.out"
+  go tool cover -html="/tmp/c.out"
 }

@@ -1,4 +1,17 @@
--- test
+local fn = vim.fn
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+local packer_bootstrap
+if fn.empty(fn.glob(install_path)) > 0 then
+  packer_bootstrap = fn.system {
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  }
+end
+
 require("packer").startup(function(use)
   -- packer can manage itself
   use "wbthomason/packer.nvim"
@@ -49,6 +62,9 @@ require("packer").startup(function(use)
   -- toggle comment
   use "terrortylor/nvim-comment"
 
+  -- some vscode like snippets
+  use "rafamadriz/friendly-snippets"
+
   -- snippet source
   use "L3MON4D3/LuaSnip"
 
@@ -86,6 +102,10 @@ require("packer").startup(function(use)
   use {
     "lewis6991/gitsigns.nvim",
   }
+
+  if packer_bootstrap then
+    require("packer").sync()
+  end
 end)
 
 -- configs for each plugin

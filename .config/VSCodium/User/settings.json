@@ -5,8 +5,7 @@
   // some extension defaults
   "bracketPairColorizer.depreciation-notice": false,
   "latex-workshop.view.pdf.viewer": "browser",
-
-  // formatter
+  // formatters
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[c]": {
     "editor.defaultFormatter": "ms-vscode.cpptools"
@@ -14,7 +13,13 @@
   "[rust]": {
     "editor.defaultFormatter": "matklad.rust-analyzer"
   },
+  "[go]": {
+    "editor.defaultFormatter": "golang.go"
+  },
   "editor.autoClosingQuotes": "never",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
   "latex-workshop.latex.tools": [
     {
       "name": "latexmk",

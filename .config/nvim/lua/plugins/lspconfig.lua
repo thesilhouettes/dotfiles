@@ -184,12 +184,18 @@ local servers = {
     end,
   },
   cssls = {},
-  jsonls = {},
+  jsonls = {
+    on_attach = function(client, bufnr)
+      base_on_attach(client, bufnr)
+      client.resolved_capabilities.document_formatting = false
+    end,
+  },
   html = {},
   graphql = {},
   ccls = {},
   emmet_ls = {},
   bashls = {},
+  gopls = {},
 }
 -- add additional capabilities supported by nvim-cmp
 local capabilities = vim.lsp.protocol.make_client_capabilities()

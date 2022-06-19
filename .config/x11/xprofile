@@ -5,9 +5,11 @@ XRESOURCES="${XDG_CONFIG_HOME:-$HOME/.config}/x11/xresources"
 # merge the xresources if there is one
 [ -f "$XRESOURCES" ] && xrdb -merge "$XRESOURCES"
 
-# this will swap caps lock and esc, and make the repeated keys speed faster
-# see the script in ~/.local/scripts
-remaps &
+# start the ibus daemon
+ibus-daemon -drRx -E disable
+
+# decrease keyboard repeat delay and increase repeat rate
+(sleep 10s && xset r rate 200 45) &
 
 # start
 # don't start anything if nothing is supplied
