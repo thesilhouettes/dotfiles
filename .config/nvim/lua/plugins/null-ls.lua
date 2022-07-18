@@ -3,16 +3,7 @@ local sources = {
   null_ls.builtins.code_actions.eslint,
   null_ls.builtins.diagnostics.eslint,
   null_ls.builtins.formatting.prettier,
-  null_ls.builtins.code_actions.proselint,
   null_ls.builtins.formatting.rustfmt,
-  null_ls.builtins.formatting.shfmt,
-  null_ls.builtins.diagnostics.sqlfluff.with {
-    extra_args = {
-      "--dialect",
-      "postgres",
-    },
-  },
-  null_ls.builtins.formatting.pg_format,
   null_ls.builtins.formatting.stylua.with {
     extra_args = {
       "--call-parentheses=None",

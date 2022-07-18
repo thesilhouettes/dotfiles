@@ -9,6 +9,9 @@ local opts = {
   silent = true,
 }
 
+-- add additional capabilities supported by nvim-cmp
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local base_on_attach = function(client, bufnr)
@@ -95,13 +98,6 @@ local base_on_attach = function(client, bufnr)
   vim.api.nvim_buf_set_keymap(
     bufnr,
     "n",
-    "gr",
-    "<cmd>lua vim.lsp.buf.references()<CR>",
-    opts
-  )
-  vim.api.nvim_buf_set_keymap(
-    bufnr,
-    "n",
     "<space>f",
     "<cmd>lua vim.lsp.buf.formatting()<CR>",
     opts
@@ -127,7 +123,10 @@ local sumneko_lua_settings = {
     },
     workspace = {
       -- make the server aware of neovim runtime files
-      library = vim.api.nvim_get_runtime_file("", true),
+      library = {
+        vim.fn.expand "$VIMRUNTIME/lua",
+        vim.fn.stdpath "config" .. "/lua",
+      },
     },
     telemetry = {
       enable = false,
@@ -138,6 +137,9 @@ local sumneko_lua_settings = {
 local servers = {
   rust_analyzer = {},
   tsserver = {
+    root_dir = function()
+      return vim.loop.cwd()
+    end,
     init_options = require("nvim-lsp-ts-utils").init_options,
     on_attach = function(client, bufnr)
       base_on_attach(client, bufnr)
@@ -145,7 +147,11 @@ local servers = {
       local ts_utils = require "nvim-lsp-ts-utils"
       ts_utils.setup {
         update_imports_on_move = true,
-        auto_inlay_hints = false,
+        -- if there is no jsconfig.json, tsconfig.json or .git
+        -- this plugin will not start if none of those are present
+        -- this is for performance reasons. The plugin does not know when to
+        -- ignore node_modules
+        watch_dir = "src",
       }
 
       -- required to fix code action ranges and filter diagnostics
@@ -190,15 +196,35 @@ local servers = {
       client.resolved_capabilities.document_formatting = false
     end,
   },
-  html = {},
+  html = {
+    on_attach = function(client, bufnr)
+      base_on_attach(client, bufnr)
+      client.resolved_capabilities.document_formatting = false
+    end,
+  },
   graphql = {},
-  ccls = {},
-  emmet_ls = {},
+  clangd = {},
+  emmet_ls = {
+    capabilities = capabilities,
+    single_file_support = true,
+  },
   bashls = {},
   gopls = {},
+  awk_ls = {},
+  eslint = {},
+  yamlls = {},
+  ltex = {},
+  texlab = {},
+  marksman = {},
+  tailwindcss = {},
+  denols = {
+    on_attach = function(client, bufnr)
+      base_on_attach(client, bufnr)
+      client.resolved_capabilities.document_formatting = false
+    end,
+    root_dir = nvimlsp.util.root_pattern "deno.json",
+  },
 }
--- add additional capabilities supported by nvim-cmp
-local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").update_capabilities(capabilities)
 
 for name, settings in pairs(servers) do

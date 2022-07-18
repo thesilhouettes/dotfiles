@@ -49,29 +49,30 @@ cmd open ${{
     esac
 }}
 
-# define a custom 'rename' command without prompt for overwrite
-# cmd rename %[ -e $1 ] && printf "file exists" || mv $f $1
-# map r push :rename<space>
-
-# make sure trash folder exists
-# %mkdir -p ~/.trash
-
-# move current file or selected files to trash folder
-# (also see 'man mv' for backup/overwrite options)
-cmd trash %set -f; mv $fx ~/.trash
-
 # define a custom 'delete' command
 cmd delete ${{
     set -f
     printf "$fx\n"
-    printf "delete?[y/n]"
+    printf "delete? [y/n]"
     read ans
     [ $ans = "y" ] && rm -rf $fx
 }}
 
+# define a custom 'trash' command
+cmd trash ${{
+    set -f
+    printf "$fx\n"
+    printf "trash? [y/n]"
+    read ans
+    [ $ans = "y" ] && trash-put $fx
+}}
+
 # use '<delete>' key for either 'trash' or 'delete' command
 # map <delete> trash
-map D delete
+map D trash
+map <delete> delete
+
+map T cd ~/.local/share/Trash/files
 
 # extract the current file with the right command
 # (xkcd link: https://xkcd.com/1168/)
@@ -147,11 +148,17 @@ map gl cd /home/silhouette/.local
 map gr cd /home/silhouette/.local/repos
 map gc cd /home/silhouette/.local/sources
 map gs cd /home/silhouette/.local/scripts
+map gh cd /home/silhouette/.local/share
 map gf cd /home/silhouette/.config
 map gz cd /home/silhouette/.config/zsh
+map gy cd /home/silhouette/.config/shell
 map gx cd /home/silhouette/.config/x11
 map gp cd /home/silhouette/.config/polybar
 map gv cd /home/silhouette/.config/nvim
+map ge cd /home/silhouette/.config/eww
 map gmd cd /home/silhouette/Documents/mdbooks
+map gdoc cd /home/silhouette/Documents/docs
+map gpic cd /home/silhouette/Pictures
+map gdwn cd /home/silhouette/Downloads
 
 ### End of BOOKMARKER generation

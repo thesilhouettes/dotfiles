@@ -8,12 +8,10 @@ function cmp_window:has_scrollbar()
   return false
 end
 
-require("luasnip.loaders.from_vscode").lazy_load()
-
 cmp.setup {
   snippet = {
     expand = function(args)
-      require("luasnip").lsp_expand(args.body)
+      vim.fn["UltiSnips#Anon"](args.body)
     end,
   },
   formatting = {
@@ -41,16 +39,6 @@ cmp.setup {
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif require("luasnip").expand_or_jumpable() then
-        vim.fn.feedkeys(
-          vim.api.nvim_replace_termcodes(
-            "<Plug>luasnip-expand-or-jump",
-            true,
-            true,
-            true
-          ),
-          ""
-        )
       else
         fallback()
       end
@@ -61,16 +49,6 @@ cmp.setup {
     ["<S-Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif require("luasnip").jumpable(-1) then
-        vim.fn.feedkeys(
-          vim.api.nvim_replace_termcodes(
-            "<Plug>luasnip-jump-prev",
-            true,
-            true,
-            true
-          ),
-          ""
-        )
       else
         fallback()
       end
@@ -84,7 +62,7 @@ cmp.setup {
       name = "nvim_lsp",
     },
     {
-      name = "luasnip",
+      name = "ultisnips",
     },
     {
       name = "buffer",

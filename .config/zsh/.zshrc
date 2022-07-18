@@ -41,6 +41,10 @@ source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zs
 # auto suggestions settings
 bindkey '^ ' autosuggest-accept
 
+autoload -z edit-command-line
+zle -N edit-command-line
+bindkey "^X^E" edit-command-line
+
 # shamelessly copied from https://github.com/gokcehan/lf/blob/master/etc/lfcd.sh
 tmp="$(mktemp)"
 lfcd() {
@@ -62,3 +66,18 @@ gocov() {
   go test -coverprofile="/tmp/c.out"
   go tool cover -html="/tmp/c.out"
 }
+
+# run all go files
+gorun() {
+  go run $(ls -1 *.go | grep -v _test.go) "$@"
+}
+
+gowatch() {
+  go watch go run $(ls -1 *.go | grep -v _test.go) "$@"
+}
+
+newscript() {
+  touch "$1" && chmod +x "$1" && nvim "$1"
+}
+
+

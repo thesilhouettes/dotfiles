@@ -1,0 +1,23 @@
+require("nvim-lsp-installer").setup {
+  ensure_installed = {
+    "texlab",
+    "marksman",
+    "tailwindcss",
+    "rust_analyzer",
+    "sumneko_lua",
+    "tsserver",
+    "gopls",
+    "bashls",
+    "html",
+    "cssls",
+    "graphql",
+    "clangd",
+    "emmet_ls",
+    "bashls",
+    "gopls",
+    "awk_ls",
+    "eslint",
+    "yamlls",
+    "jsonls",
+  },
+}

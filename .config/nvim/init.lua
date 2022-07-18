@@ -6,3 +6,6 @@ require "plugins"
 
 -- import keymappings
 require "mappings"
+
+-- import other lua scripts
+require "others"

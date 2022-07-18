@@ -14,9 +14,35 @@ vim.keymap.set("n", "<M-l>", "<c-w>l")
 vim.keymap.set("t", "jk", "<C-\\><C-n>")
 
 vim.keymap.set("n", "<leader>ev", ":edit $MYVIMRC<cr>")
-vim.keymap.set("n", "<leader>sv", "so $MYVIMRC<cr>")
+vim.keymap.set("n", "<leader>sv", ":so $MYVIMRC<cr>")
+
+vim.keymap.set("n", "Z", "ZZ")
+vim.keymap.set("n", "Q", "ZQ")
+
+vim.keymap.set(
+  "n",
+  "<leader>w",
+  ":edit " .. os.getenv "HOME" .. "/Documents/vimwiki/index.md<cr>"
+)
+
+local started = false
+
+vim.keymap.set("n", "<leader>ew", function()
+  if started then
+    vim.cmd "!eww close bar"
+  else
+    vim.cmd "!eww open bar"
+  end
+end)
+
+vim.keymap.set("n", "<leader>ct", ":!ctest --test-dir build")
+
+vim.keymap.set("n", "<leader>cm", ":!cmake --build build")
 
 require "mappings/bufferline"
 require "mappings/telescope"
 require "mappings/lspconfig"
 require "mappings/nvim-tree"
+require "mappings/glow"
+require "mappings/trouble"
+require "mappings/venn"

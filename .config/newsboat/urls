@@ -16,11 +16,23 @@ https://www.youtube.com/feeds/videos.xml?channel_id=UC4YUKOBld2PoOLzk0YZ80lw her
 https://www.youtube.com/feeds/videos.xml?channel_id=UC4O9HKe9Jt5yAhKuNv3LXpQ hermitcraft yt # docm
 https://www.youtube.com/feeds/videos.xml?channel_id=UCPK5G4jeoVEbUp5crKJl6CQ hermitcraft yt # zedaph
 https://www.youtube.com/feeds/videos.xml?channel_id=UCZ9x-z3iOnIbJxVpm1rsu2A hermitcraft yt # iskall
+https://www.youtube.com/feeds/videos.xml?channel_id=UCFKDEp9si4RmHFWJW1vYsMA hermitcraft yt # etho
 https://www.youtube.com/feeds/videos.xml?channel_id=UC32w6uX5qtmUtF4QQQ2PKaQ hermitcraft yt # recap
+https://www.youtube.com/feeds/videos.xml?channel_id=UCT-naKorrucwDsLTE6fwtOg hermitcraft yt # ariosor11
+https://www.youtube.com/feeds/videos.xml?channel_id=UCHSI8erNrN6hs3sUK6oONLA minecraft yt # ilmango
 https://www.youtube.com/feeds/videos.xml?channel_id=UCUkRj4qoT1bsWpE_C8lZYoQ gamedev yt # thin matrix
+https://www.youtube.com/feeds/videos.xml?channel_id=UCCVFgDdTfiGxQ695BxMBMUg politics yt # chip
+https://www.youtube.com/feeds/videos.xml?channel_id=UCXf8jlTSP9kp6g4ROCfgvbQ politics yt # sham
+https://www.youtube.com/feeds/videos.xml?channel_id=UCMk_WSPy3EE16aK5HLzCJzw lang yt # nativ
+https://www.youtube.com/feeds/videos.xml?channel_id=UCNhX3WQEkraW3VHPyup8jkQ lang yt # langfocus
+https://www.youtube.com/feeds/videos.xml?channel_id=UCYO_jab_esuFRV4b17AJtAw math yt # 3b1b
+https://www.youtube.com/feeds/videos.xml?channel_id=UCBa659QWEk1AI4Tg--mrJ2A any yt # tom scott
+https://www.youtube.com/feeds/videos.xml?channel_id=UCD9y_aCUHf91FkBqzpzSaRQ stardew yt # ezlilyy
 ---Twitter--
 https://nitter.net/docm77/with_replies/rss hermitcraft tw # docm
+https://nitter.net/mpocock1/with_replies/rss tw # matt pocock typescript
+--Podcasts--
+# https://rss.art19.com/merriam-websters-word-of-the-day dict # merriam
 ---Myself---
-https://thesilhouettes.github.io/ts-blog/rss.xml blog
-
-
+https://thesilhouettes.github.io/rss.xml # my blog
+http://localhost:3000/rss.xml # testing

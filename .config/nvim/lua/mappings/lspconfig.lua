@@ -5,12 +5,6 @@ local opts = {
 
 vim.api.nvim_set_keymap(
   "n",
-  "<C-,>",
-  "<cmd>lua vim.diagnostic.open_float()<CR>",
-  opts
-)
-vim.api.nvim_set_keymap(
-  "n",
   "dk",
   "<cmd>lua vim.diagnostic.goto_prev()<CR>",
   opts
@@ -26,5 +20,13 @@ vim.api.nvim_set_keymap(
   "n",
   "<space>q",
   "<cmd>lua vim.diagnostic.setloclist()<CR>",
+  opts
+)
+
+-- floating diagnostics
+vim.api.nvim_set_keymap(
+  "n",
+  "<C-d>",
+  "<cmd>lua vim.diagnostic.open_float()<CR>",
   opts
 )

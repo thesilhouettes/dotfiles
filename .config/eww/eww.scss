@@ -1,0 +1,38 @@
+* {
+  all: unset; //Unsets everything so you can style everything from scratch
+  font-family: "JetBrainsMono Nerd Font";
+}
+
+//Global Styles
+.bar {
+  background-color: #1e1d2f;
+  color: #d9e0ee;
+}
+
+.main-box {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.label-ram {
+  font-size: large;
+}
+
+.workspaces button:hover,
+.active-workspace {
+  color: #89dceb;
+  font-weight: bold;
+}
+
+.workspaces button {
+  padding: 0 20px;
+  transition: color 100ms ease 0ms;
+}
+
+.stuff {
+  padding: 0 20px;
+}
+
+.label {
+  margin-right: 10px;
+}

@@ -4,5 +4,5 @@ vim.keymap.set("n", "eh", ":BufferLineCyclePrev<cr>")
 vim.keymap.set("n", "el", ":BufferLineCycleNext<cr>")
 
 -- this moves a buffer back and forth
-vim.keymap.set("n", "fh", ":BufferLineMovePrev<cr>")
-vim.keymap.set("n", "fl", ":BufferLineMoveNext<cr>")
+vim.keymap.set("n", "sh", ":BufferLineMovePrev<cr>")
+vim.keymap.set("n", "sl", ":BufferLineMoveNext<cr>")
